@@ -23,7 +23,7 @@ namespace RESTful_Service.Models
         public string StringsConcat() => string.Concat(_stringOne, _stringTwo);
         public string StringsReplay()
         {
-            if (_stringOne == null) throw new ArgumentNullException();
+            if (_stringOne == null || _replaysCount < 0) throw new ArgumentException();
             string result = "";
             for (int j = 0; j < _replaysCount; j++)
             {

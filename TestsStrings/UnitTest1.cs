@@ -60,7 +60,17 @@ namespace Tests
             Strings strings = new Strings();
             strings._stringOne = stringOne;
 
-            Assert.ThrowsException<ArgumentNullException>(() => strings.StringsReplay());
+            Assert.ThrowsException<ArgumentException>(() => strings.StringsReplay());
+        }
+
+        [TestMethod]
+        public void ReplaysTestMethodThree()
+        {
+            int replays = -1;
+            Strings strings = new Strings();
+            strings._replaysCount = replays;
+
+            Assert.ThrowsException<ArgumentException>(() => strings.StringsReplay());
         }
     }
 }
