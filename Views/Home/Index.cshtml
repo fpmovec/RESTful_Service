@@ -1,0 +1,39 @@
+﻿<div id="body">
+   <ul id="strings"></ul>
+    <form id="saveStringsForm" method="post">
+        <h3>Create new strings</h3>
+        <p>
+            <label for="string1">String 1:</label>
+            <input type="text" name="_stringOne" />
+        </p>
+        <p>
+            <label for="string2">String 2:</label>
+            <input type="text" name="_stringTwo" />
+        </p>
+        <p>
+            <label for="replays">Replays count:</label>
+            <input type="number" name="_replaysCount" />
+        </p>
+        <input type="button" id="saveStrings" value="Save"/>
+    </form>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('#saveStrings').click(function () {
+            $.post("api/WebService",
+                $('#saveStringsForm').serialize(),
+                function (value) {
+                    $('#strings').append('<strong>' + "String 1: " + '</strong>' + value._stringOne + '<br>'
+                        + '<strong>' + "String 2: " + '</strong>'+ value._stringTwo
+                        + '<ul>' + "Replays count: " + value._replaysCount + '</ul>'
+                        + '<ul>' + "Strings concat: " + value._stringConcat + '</ul>'
+                        + '<ul>' + "Replays of the first string: " + value._stringReplay + '</ul>')
+                },
+                "json"
+            );
+        })
+    </script>
+
+}
